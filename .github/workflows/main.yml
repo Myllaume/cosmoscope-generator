@@ -2,7 +2,7 @@ name: Build and Deploy
 on: 
   push: 
     branches:
-      - main
+      - master
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
         with:
-          ref: prod
+          ref: master
           persist-credentials: false
 
       - name: Install dependencies and prepare data ⚙
