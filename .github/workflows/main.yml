@@ -16,6 +16,7 @@ jobs:
       - name: Install dependencies and prepare data ⚙
         run: |
           npm i
+          sh install.sh
         continue-on-error: true
       - name: Build 🔧
         # continue-on-error: true
