@@ -13,7 +13,7 @@
     
     <meta name="keywords" content="">
     
-    <meta name="date" content="2022-08-02T17:48:33+00:00">
+    <meta name="date" content="2022-08-03T17:58:42+00:00">
     <title>Cosma — Cosmoscope</title>
 
     <style>
@@ -1049,6 +1049,11 @@ var e,t;e=this,t=function(){"use strict";function e(t){return(e="function"==type
 
         <footer class="menu-footer">
             
+            <button onclick="openRecord('citation-references', false)"
+                class="bibliography-open" title="Données bibliographiques">
+                Données
+            </button>
+            
 
             <button class="btn-help" onclick="openRecord('help', false)">
                 Aide
@@ -1081,7 +1086,7 @@ var e,t;e=this,t=function(){"use strict";function e(t){return(e="function"==type
 
                 <div class="record-last-edit">
                     <span>dernière modification :</span>
-                    <time class="record-date" datetime="mardi 2 août 2022 17:48">mardi 2 août 2022 17:48</time>
+                    <time class="record-date" datetime="mercredi 3 août 2022 17:58">mercredi 3 août 2022 17:58</time>
                 </div>
 
                 <div class="record-type">
@@ -1098,9 +1103,18 @@ var e,t;e=this,t=function(){"use strict";function e(t){return(e="function"==type
             </header>
 
             <main class="record-content">
-                <p>Coucou</p>
+                <p>Coucou (Lorusso 2021)</p>
 
 
+                
+                <section class="bibliography">
+                    <hr/>
+                    <h1>Bibliographie</h1>
+
+                      <div class="csl-entry">LORUSSO, Silvio, 2021. The User Condition. <i>The User Condition</i> [en ligne]. janvier 2021. [Consulté le 28 juin 2022]. Disponible à l’adresse : https://theusercondition.computer/</div>
+
+
+                </section>
                 
             </main>
 
@@ -1256,6 +1270,19 @@ var e,t;e=this,t=function(){"use strict";function e(t){return(e="function"==type
         </article>
 
         
+        <article id="citation-references" class="record">
+            <main>
+                <h1>Données bibliographiques</h1>
+    
+                <p>Les données ci-dessous correspondent aux références citées dans ce cosmoscope. Elles sont structurées conformément au standard Citation Style Language et exprimées en JSON. Ce format est reconnu par la plupart des logiciels de gestion bibliographique, comme Zotero, Mendeley ou Papers. Cliquez sur le bouton ci-dessous pour télécharger les données.
+</p>
+    
+                <button>Télécharger</button>
+    
+                <code>[{&quot;id&quot;:&quot;Lorusso2021&quot;,&quot;type&quot;:&quot;webpage&quot;,&quot;title&quot;:&quot;The User Condition&quot;,&quot;container-title&quot;:&quot;The User Condition&quot;,&quot;abstract&quot;:&quot;An Essay on Computer Agency and Behavior. Silvio Lorusso, 2021&quot;,&quot;URL&quot;:&quot;https://theusercondition.computer/&quot;,&quot;language&quot;:&quot;en&quot;,&quot;author&quot;:[{&quot;family&quot;:&quot;Lorusso&quot;,&quot;given&quot;:&quot;Silvio&quot;}],&quot;issued&quot;:{&quot;date-parts&quot;:[[2021,1]]},&quot;accessed&quot;:{&quot;date-parts&quot;:[[2022,6,28]]},&quot;used&quot;:true}]</code>
+            </main>
+        </article>
+        
 
     </main>
 
@@ -1298,7 +1325,7 @@ var e,t;e=this,t=function(){"use strict";function e(t){return(e="function"==type
 
     <script>
         const data = {"nodes":[{"id":20201209111625,"label":"Titre du document","type":"undefined","size":1,"focus":[]}],"links":[]};
-        const graphProperties = {"files_origin":"./docs","export_target":"./public/","history":true,"focus_max":2,"record_types":{"undefined":"#858585"},"link_types":{"undefined":{"stroke":"simple","color":"#e1e1e1"}},"graph_background_color":"#ffffff","graph_highlight_color":"#ff6a6a","graph_highlight_on_hover":true,"graph_text_size":10,"graph_arrows":true,"attraction_force":200,"attraction_distance_max":250,"attraction_vertical":0,"attraction_horizontal":0,"views":{},"title":"","author":"","description":"","keywords":[],"link_symbol":"","csl":"","bibliography":"","csl_locale":"","css_custom":"","devtools":false,"lang":"fr"};
+        const graphProperties = {"files_origin":"./docs","export_target":"./public/","history":true,"focus_max":2,"record_types":{"undefined":"#858585"},"link_types":{"undefined":{"stroke":"simple","color":"#e1e1e1"}},"graph_background_color":"#ffffff","graph_highlight_color":"#ff6a6a","graph_highlight_on_hover":true,"graph_text_size":10,"graph_arrows":true,"attraction_force":200,"attraction_distance_max":250,"attraction_vertical":0,"attraction_horizontal":0,"views":{},"title":"","author":"","description":"","keywords":[],"link_symbol":"","csl":"./assets/citeproc-style.csl","bibliography":"./assets/bib.json","csl_locale":"./assets/citeproc-i18n.xml","css_custom":"","devtools":false,"lang":"fr"};
         const tagList = [{"name":"mot-clé 1","nodes":[20201209111625]},{"name":"mot-clé 2","nodes":[20201209111625]}];
     </script>
 
@@ -2922,6 +2949,34 @@ function setCounter(counterElt, value) {
     }
 }
 
+        
+            /**
+ * @file Download data from the cosmoscope.
+ * @author Guillaume Brioudes
+ * @copyright GNU GPL 3.0 ANR HyperOtlet
+ */
+
+/**
+ * Download data of the bibliography
+ */
+
+(function() {
+    const bibliographyContainer = document.getElementById('citation-references')
+        , btn = bibliographyContainer.querySelector('button')
+        , code = bibliographyContainer.querySelector('code');
+
+    btn.addEventListener('click', () => {
+        const virtualLink = document.createElement('a');
+        virtualLink.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(code.textContent));
+        virtualLink.setAttribute('download', 'bibliography.json');
+        virtualLink.style.display = 'none';
+        document.body.appendChild(virtualLink);
+    
+        virtualLink.click();
+        virtualLink.remove();
+    });
+
+})();
         
     </script>
 </body>
