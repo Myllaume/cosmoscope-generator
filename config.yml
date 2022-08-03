@@ -1,2 +1,5 @@
 files_origin: ./docs
 export_target: ./public/
+csl: ./assets/citeproc-style.csl
+csl_locale: ./assets/citeproc-i18n.xml
+bibliography: ./assets/bib.json
