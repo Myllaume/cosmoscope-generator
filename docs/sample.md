@@ -7,4 +7,4 @@ tags:
 - mot-clé 2
 ---
 
-Coucou [@Lorusso2021]
+Hello world [@Bachimont2020]
