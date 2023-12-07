@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@graphlab-fr/cosma": "^2.0.3"
+    "@graphlab-fr/cosma": "^2.4.0"
   },
   "scripts": {
     "prestart": "node bibliography.js",
