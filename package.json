@@ -3,7 +3,6 @@
     "@graphlab-fr/cosma": "^2.5.0"
   },
   "scripts": {
-    "prestart": "node bibliography.js",
     "start": "./node_modules/.bin/cosma modelize --citeproc",
     "add": "./node_modules/.bin/cosma record"
   }
